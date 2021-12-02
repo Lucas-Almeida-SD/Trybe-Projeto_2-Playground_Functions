@@ -5,7 +5,9 @@ function techList(arrayTech, nome) {
     arrayTech = arrayTech.sort();
     resultado = [];
     for (let index = 0; index < arrayTech.length; index += 1) {
-      resultado.push({ tech: arrayTech[index], name: nome });
+      resultado.push({
+        tech: arrayTech[index],
+        name: nome });
     }
   } else {
     resultado = 'Vazio!';
@@ -99,16 +101,37 @@ function thirdCondition(lineA, lineB, lineC) {
 
 function triangleCheck(lineA, lineB, lineC) {
   let result = false;
-  if (firstCondition(lineA, lineB, lineC) === true && secondCondition(lineA, lineB, lineC) === true && thirdCondition(lineA, lineB, lineC) === true) {
+  let conditionOne = firstCondition(lineA, lineB, lineC);
+  let conditionTwo = secondCondition(lineA, lineB, lineC);
+  let conditionThree = thirdCondition(lineA, lineB, lineC);
+  if (conditionOne === true && conditionTwo === true && conditionThree === true) {
     result = true;
   }
   return result;
 }
-console.log(triangleCheck(5, 10, 9));
 
 // Desafio 13
-function hydrate() {
-  // seu código aqui
+function findNumber(string) {
+  let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  let strNumber = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  let count = 0;
+  for (let element of string) {
+    if (strNumber.indexOf(element) !== -1) {
+      count += numbers[strNumber.indexOf(element)];
+    }
+  }
+  return count;
+}
+
+function hydrate(string) {
+  let coposDeAgua = findNumber(string);
+  let phrase;
+  if (coposDeAgua > 1) {
+    phrase = `${coposDeAgua} copos de água`;
+  } else {
+    phrase = `${coposDeAgua} copo de água`;
+  }
+  return phrase;
 }
 
 module.exports = {
