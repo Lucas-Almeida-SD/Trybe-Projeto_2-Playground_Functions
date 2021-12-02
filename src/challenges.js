@@ -93,12 +93,40 @@ function fizzBuzz(array) {
 }
 
 // Desafio 9
-function encode() {
-  // seu código aqui
+function encode(string) {
+  let vogaisToNumber = {
+    a: '1',
+    e: '2',
+    i: '3',
+    o: '4',
+    u: '5' };
+  let phrase = '';
+  for (let letra of string) {
+    if (vogaisToNumber[letra] !== undefined) {
+      phrase += vogaisToNumber[letra];
+    } else {
+      phrase += letra;
+    }
+  }
+  return phrase;
 }
 
-function decode() {
-  // seu código aqui
+function decode(string) {
+  let numberToVogais = {
+    1: 'a',
+    2: 'e',
+    3: 'i',
+    4: 'o',
+    5: 'u' };
+  let phrase = '';
+  for (let element of string) {
+    if (numberToVogais[element] !== undefined) {
+      phrase += numberToVogais[element];
+    } else {
+      phrase += element;
+    }
+  }
+  return phrase;
 }
 
 module.exports = {
