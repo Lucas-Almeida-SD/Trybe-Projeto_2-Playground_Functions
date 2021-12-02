@@ -16,13 +16,27 @@ function calcArea(base, height) {
 }
 
 // Desafio 3
-function splitSentence() {
-  // seu código aqui
+function splitSentence(string) {
+  let splitedSentence = [];
+  let particion = '';
+  for (let index = 0; index < string.length; index += 1) {
+    if (string[index] !== ' ' && index !== string.length - 1) {
+      particion += string[index];
+    } else if (index === string.length - 1) {
+      particion += string[index];
+      splitedSentence.push(particion);
+    } else {
+      splitedSentence.push(particion);
+      particion = '';
+    }
+  }
+  return splitedSentence;
 }
 
 // Desafio 4
-function concatName() {
-  // seu código aqui
+function concatName(array) {
+  let string = array[array.length - 1] + ', ' + array[0];
+  return string;
 }
 
 // Desafio 5
