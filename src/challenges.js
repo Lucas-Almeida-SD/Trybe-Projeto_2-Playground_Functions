@@ -18,16 +18,13 @@ function calcArea(base, height) {
 // Desafio 3
 function splitSentence(string) {
   let splitedSentence = [];
-  let particion = '';
+  let inicio = 0;
   for (let index = 0; index < string.length; index += 1) {
-    if (string[index] !== ' ' && index !== string.length - 1) {
-      particion += string[index];
+    if (string[index] === ' ') {
+      splitedSentence.push(string.slice(inicio, index));
+      inicio = index + 1;
     } else if (index === string.length - 1) {
-      particion += string[index];
-      splitedSentence.push(particion);
-    } else {
-      splitedSentence.push(particion);
-      particion = '';
+      splitedSentence.push(string.slice(inicio, index + 1));
     }
   }
   return splitedSentence;
@@ -46,14 +43,19 @@ function footballPoints(wins, ties) {
 }
 
 // Desafio 6
-function highestCount(array) {
+function maisSeRepete(array) {
   let maior = array[0];
-  let count = 0;
   for (let number of array) {
     if (number > maior) {
       maior = number;
     }
   }
+  return maior;
+}
+
+function highestCount(array) {
+  let count = 0;
+  let maior = maisSeRepete(array);
   for (let verificador of array) {
     if (verificador === maior) {
       count += 1;
@@ -76,18 +78,40 @@ function catAndMouse(mouse, cat1, cat2) {
 }
 
 // Desafio 8
+function ehDivisivelSoPorCinco(verificarNumber) {
+  let result;
+  if (verificarNumber % 5 === 0) {
+    result = 'buzz';
+  } else {
+    result = 'bug!';
+  }
+  return result;
+}
+
+function ehDivisivelSoPorTres(verificarNumber) {
+  let result;
+  if (verificarNumber % 3 === 0) {
+    result = 'fizz';
+  } else {
+    result = ehDivisivelSoPorCinco(verificarNumber);
+  }
+  return result;
+}
+
+function ehDivisivelPorTresECinco(verificarNumber) {
+  let result;
+  if (verificarNumber % 3 === 0 && verificarNumber % 5 === 0) {
+    result = 'fizzBuzz';
+  } else {
+    result = ehDivisivelSoPorTres(verificarNumber);
+  }
+  return result;
+}
+
 function fizzBuzz(array) {
   let arrayFizzBuzz = [];
   for (let number of array) {
-    if (number % 3 === 0 && number % 5 === 0) {
-      arrayFizzBuzz.push('fizzBuzz');
-    } else if (number % 3 === 0) {
-      arrayFizzBuzz.push('fizz');
-    } else if (number % 5 === 0) {
-      arrayFizzBuzz.push('buzz');
-    } else {
-      arrayFizzBuzz.push('bug!')
-    }
+    arrayFizzBuzz.push(ehDivisivelPorTresECinco(number));
   }
   return arrayFizzBuzz;
 }

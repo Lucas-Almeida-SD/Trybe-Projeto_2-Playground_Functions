@@ -23,18 +23,25 @@ function diferenteDeOnze(arrayOfNumbers) {
   }
   return result;
 }
-
-function repeteTresVezes(arrayOfNumbers) {
+function repeteTresMais(index, arrayOfNumbers) {
   let result = false;
-  for (let index = 0; index < arrayOfNumbers.length; index += 1) {
-    let count = 0;
-    for (let kindex of arrayOfNumbers) {
-      if (arrayOfNumbers[index] === kindex) {
-        count += 1;
-      }
+  let count = 0;
+  for (let kindex = index; kindex < arrayOfNumbers.length; kindex += 1) {
+    if (arrayOfNumbers[index] === arrayOfNumbers[kindex]) {
+      count += 1;
     }
-    if (count >= 3) {
-      result = true;
+  }
+  if (count >= 3) {
+    result = true;
+  }
+  return result;
+}
+
+function verificaNumerosRepetidos(arrayOfNumbers) {
+  let result;
+  for (let index = 0; index < arrayOfNumbers.length; index += 1) {
+    result = repeteTresMais(index, arrayOfNumbers);
+    if (result === true) {
       break;
     }
   }
@@ -66,7 +73,7 @@ function generatePhoneNumber(arrayOfNumbers) {
   let result;
   if (diferenteDeOnze(array) === true) {
     result = 'Array com tamanho incorreto.';
-  } else if (repeteTresVezes(array) === true || menorQueZeroMaiorQueNove(array) === true) {
+  } else if (verificaNumerosRepetidos(array) === true || menorQueZeroMaiorQueNove(array) === true) {
     result = 'não é possível gerar um número de telefone com esses valores';
   } else {
     result = phoneNumber(array);
