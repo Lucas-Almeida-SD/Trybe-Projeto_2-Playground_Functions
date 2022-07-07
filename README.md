@@ -4,4 +4,4 @@ Esse projeto foi realizado para exercitar o que foi aprendido no Bloco 4 do Mód
 
 Nesse projeto foram desenvolvidas variadas funções, cada uma realizando determinada tarefa de acordo com os requisitos que foram solicitados no projeto.
 
-Os arquivos com que possuem as funções encontram-se dentro do diretório `src`.
+Os arquivos que possuem as funções encontram-se dentro do diretório `src`.
